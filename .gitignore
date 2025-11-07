@@ -1,0 +1,14 @@
+# Email Configuration (contains sensitive credentials)
+email_config.php
+
+# Composer
+vendor/
+composer.lock
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

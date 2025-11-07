@@ -1,0 +1,204 @@
+Product Requirements Document (PRD) — DeliaNexus Website
+1. Overview
+
+Project Name: DeliaNexus
+Industry: Fashion • Digital Media • Health & Wellness
+Deployment:
+
+Frontend: HTML + Tailwind (hosted on Hostinger)
+
+Backend: Supabase (database, API, and storage for images)
+
+Goal:
+To build a simple yet professional website for DeliaNexus that presents its three divisions — Fashion, Digital, and Health — while enabling an admin to manage content easily through Supabase.
+
+2. Objectives
+
+Provide a unified online presence for DeliaNexus.
+
+Allow non-technical admin updates (adding products/services via Supabase dashboard).
+
+Display products and services attractively to users without requiring logins or sign-ups.
+
+Allow users to either:
+
+Click “Order via WhatsApp” — automatically open WhatsApp with prefilled item details, or
+
+Call directly — open their dialer with the company number.
+
+3. Website Architecture
+Two-Sided System
+
+Admin Side: Managed directly through Supabase (no need to build a separate dashboard for now).
+
+User Side (Public Website): Reads content from Supabase and displays it beautifully in sections.
+
+4. Functional Requirements
+4.1 Frontend (User-Facing Website)
+
+Pages/Sections:
+
+Home Page
+
+Hero section with brand tagline and visuals representing all three divisions.
+
+Navigation links to Fashion, Digital, and Health sections.
+
+Brief company introduction with “About Us” content.
+
+WhatsApp & Call buttons visible in header/footer.
+
+Fashion Section
+
+Dynamically loads fashion products from Supabase.
+
+Each product card displays:
+
+Image
+
+Product Name
+
+Short Description
+
+Price (optional)
+
+“Order via WhatsApp” button
+
+“Call to Order” button
+
+Clicking WhatsApp opens:
+
+https://wa.me/<business_number>?text=Hi, I'm interested in [Product_Name] from DeliaNexus.
+
+
+Clicking Call opens:
+
+tel:<business_number>
+
+
+Digital Section
+
+Displays digital services (graphic design, voiceovers, etc.) from Supabase.
+
+Each card shows:
+
+Service Title
+
+Short Description
+
+Optional preview/sample image
+
+“Message on WhatsApp” and “Call Now” buttons.
+
+Health Section
+
+Displays wellness and skincare products.
+
+Each product includes:
+
+Image
+
+Product Name
+
+Description
+
+Optional price
+
+“Order via WhatsApp” and “Call to Order” buttons.
+
+About Page
+
+Full overview of the company’s story, mission, and vision.
+
+Contact information and business address.
+
+Contact Section
+
+Business phone number, WhatsApp link, and social media handles.
+
+4.2 Admin Functionality (Supabase)
+
+Database Tables:
+
+Fashion
+
+id (UUID)
+
+name
+
+description
+
+price
+
+image_url
+
+created_at
+
+Digital
+
+id
+
+service_name
+
+description
+
+image_url (optional)
+
+created_at
+
+Health
+
+id
+
+name
+
+description
+
+price (optional)
+
+image_url
+
+created_at
+
+File Storage:
+
+Product and service images are stored in a Supabase storage bucket (e.g., /images/fashion, /images/health, /images/digital).
+
+Admin Actions (through Supabase dashboard):
+
+Add new item/service.
+
+Edit item/service details.
+
+Delete item/service.
+
+Upload or replace images.
+
+5. Non-Functional Requirements
+Category	Requirement
+Performance	Site should load within 2 seconds on average mobile internet.
+Responsiveness	Fully responsive on phones, tablets, and desktops.
+Scalability	Supabase should handle up to 500 entries per category easily.
+Security	Supabase public API limited to read-only for the frontend; admin authentication restricted.
+SEO	Meta tags, title, and description optimized for “DeliaNexus Ghana,” “fashion, digital media, health.”
+Design	Elegant, minimalist layout with clear typography and strong visual hierarchy.
+Accessibility	Text contrast and alt text for all images.
+6. Data Flow Summary
+
+Admin adds products/services → stored in Supabase tables.
+
+Frontend fetches data from Supabase using REST API or client SDK.
+
+Website displays content dynamically by category.
+
+When users click “Order via WhatsApp” → opens WhatsApp with item info.
+
+When users click “Call to Order” → opens dialer with business number.
+
+7. Technology Stack
+Component	Tool
+Frontend	HTML + Tailwind CSS (inline)
+Hosting	Hostinger
+Backend / Database / File Storage	Supabase
+API	Supabase REST or JS Client
+Communication Links	WhatsApp deep link + tel: protocol
