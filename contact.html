@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact DeliaNexus - Get in touch with us for fashion, digital services, and health products. We're here to help.">
-    <meta name="keywords" content="contact DeliaNexus, Ghana contact, customer service">
-    <title>Contact Us — DeliaNexus</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Contact Us — DeliaNexus | Get In Touch</title>
+    <meta name="title" content="Contact Us — DeliaNexus | Get In Touch">
+    <meta name="description" content="Contact DeliaNexus - Get in touch with us for fashion, digital services, and health products. We're here to help. Call, WhatsApp, or email us today.">
+    <meta name="keywords" content="contact DeliaNexus, Ghana contact, customer service, WhatsApp business, Accra Ghana">
+    <meta name="author" content="DeliaNexus">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.delianexus.com/contact.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.delianexus.com/contact.html">
+    <meta property="og:title" content="Contact Us — DeliaNexus | Get In Touch">
+    <meta property="og:description" content="Contact DeliaNexus - Get in touch with us for fashion, digital services, and health products. We're here to help. Call, WhatsApp, or email us today.">
+    <meta property="og:image" content="https://www.delianexus.com/img/logo.webp">
+    <meta property="og:site_name" content="DeliaNexus">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.delianexus.com/contact.html">
+    <meta property="twitter:title" content="Contact Us — DeliaNexus | Get In Touch">
+    <meta property="twitter:description" content="Contact DeliaNexus - Get in touch with us for fashion, digital services, and health products. We're here to help. Call, WhatsApp, or email us today.">
+    <meta property="twitter:image" content="https://www.delianexus.com/img/logo.webp">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="img/logo.webp">
+    <link rel="apple-touch-icon" href="img/logo.webp">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
@@ -693,9 +718,23 @@
             const formData = new FormData(contactForm);
             
             try {
-                const response = await fetch('send_email.php', {
+                // Convert FormData to JSON
+                const formDataObj = {};
+                formData.forEach((value, key) => {
+                    formDataObj[key] = value;
+                });
+                
+                // Use environment-based API URL
+                const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                    ? 'http://localhost:3000/api/contact'
+                    : 'https://del-ed9i.onrender.com/api/contact';
+                
+                const response = await fetch(API_URL, {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formDataObj)
                 });
                 
                 const result = await response.json();

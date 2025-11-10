@@ -1,0 +1,11 @@
+# robots.txt for DeliaNexus
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.delianexus.com/sitemap.xml
+
+# Disallow PHP backend files
+Disallow: /send_email.php
+Disallow: /email_config.php
+Disallow: /email_config_template.php

@@ -1,6 +1,20 @@
 # DeliaNexus Website - Setup Instructions
 
-## Contact Form Email Setup (PHPMailer)
+**⚠️ DEPRECATED: This file describes the old PHP setup.**
+
+**✅ NEW SETUP: We now use Node.js with Nodemailer!**
+
+Please refer to:
+- **[QUICK_START.md](QUICK_START.md)** - Get started in 30 minutes
+- **[DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)** - Complete deployment guide
+- **[README.md](README.md)** - Full documentation
+- **[backend/README.md](backend/README.md)** - Backend API docs
+
+---
+
+## Old PHP Setup (Archived)
+
+## Contact Form Email Setup (PHPMailer) - NO LONGER USED
 
 ### Prerequisites
 - Hostinger hosting account

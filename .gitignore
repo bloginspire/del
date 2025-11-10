@@ -1,6 +1,11 @@
 # Email Configuration (contains sensitive credentials)
 email_config.php
 
+# Backend Environment Variables
+backend/.env
+backend/node_modules/
+backend/package-lock.json
+
 # Composer
 vendor/
 composer.lock
@@ -12,3 +17,7 @@ composer.lock
 # OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
