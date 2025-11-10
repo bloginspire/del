@@ -45,25 +45,31 @@ const limiter = rateLimit({
 app.use('/api/contact', limiter);
 
 // Create nodemailer transporter
+const smtpPort = parseInt(process.env.SMTP_PORT || 587);
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT),
-  secure: false, // true for 465, false for other ports
+  port: smtpPort,
+  secure: smtpPort === 465, // Auto-detect: true for 465, false for 587
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
   tls: {
     rejectUnauthorized: false
-  }
+  },
+  connectionTimeout: 10000, // 10 seconds
+  greetingTimeout: 10000,
+  socketTimeout: 10000
 });
 
-// Verify transporter configuration
+// Verify transporter configuration (non-blocking)
 transporter.verify((error, success) => {
   if (error) {
-    console.error('SMTP connection error:', error);
+    console.warn('⚠️  SMTP verification failed:', error.message);
+    console.warn('⚠️  Email service may not work. Check SMTP credentials and settings.');
+    console.warn('⚠️  See backend/SMTP_ALTERNATIVES.md for solutions.');
   } else {
-    console.log('SMTP server is ready to send emails');
+    console.log('✅ SMTP server is ready to send emails');
   }
 });
 
