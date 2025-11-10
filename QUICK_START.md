@@ -86,10 +86,10 @@ git push origin main
 6. Click **Create Web Service**
 
 Wait 2-5 minutes for deployment. You'll get a URL like:
-`https://delianexus-backend.onrender.com`
+`https://del-ed9i.onrender.com`
 
 ### 2.3 Test Backend
-Visit: `https://delianexus-backend.onrender.com/api/health`
+Visit: `https://del-ed9i.onrender.com/api/health`
 
 ---
 
@@ -264,7 +264,7 @@ In Search Console, use "URL Inspection" tool to request indexing for:
 **🎉 Congratulations! Your website is live!**
 
 - Frontend: `https://www.delianexus.com`
-- Backend: `https://delianexus-backend.onrender.com`
+- Backend: `https://del-ed9i.onrender.com`
 - Contact form: Working! ✅
 - SEO: Optimized! ✅
 

@@ -724,7 +724,8 @@
                     formDataObj[key] = value;
                 });
                 
-                // Use environment-based API URL
+                // Use environment-based API URL - Updated: 2025-11-10
+                // Correct Render URL: https://del-ed9i.onrender.com
                 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
                     ? 'http://localhost:3000/api/contact'
                     : 'https://del-ed9i.onrender.com/api/contact';
